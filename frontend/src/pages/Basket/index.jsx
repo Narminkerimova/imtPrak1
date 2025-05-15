@@ -9,7 +9,7 @@ function Basket() {
   }
   return (
     <div className="container">
-      <h1>Total:{() => totalBasket(basket).toFixed(2)}</h1>
+      <h1>Total:{totalBasket().toFixed(2)}</h1>
       {
         basket.map((item)=>(<>
         <div className="card" key={item._id}>

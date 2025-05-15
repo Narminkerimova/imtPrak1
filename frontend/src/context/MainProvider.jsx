@@ -54,8 +54,8 @@ function MainProvider({ children }) {
     }
   }
 
-  function totalBasket(obj){
-    return basket.reduce((total,initial)=>total+(initial.price*initial.count),0)
+  function totalBasket(){
+    return( basket.reduce((total,initial)=>total+(initial.price*initial.count),0))
   }
 
   useEffect(() => {
