@@ -1,0 +1,27 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.card{
+    border: 1px solid black;
+    width: 19%;
+    height: 40vh;
+}
+.card_image{
+    width: 100%;
+    height: 75%;
+}
+.card_image img{
+    width: 100%;
+    height: 100%;
+}
+.card_title{
+    width: 100%;
+    height: 15%;
+}
+.card_buttons{
+    width: 100%;
+    height: 10%;
+}
