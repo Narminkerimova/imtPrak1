@@ -2,7 +2,7 @@ import { useContext } from "react"
 import "./style.css"
 import { MainContext } from "../../context/MainProvider"
 function Home() {
-  const {prod,addBasket} = useContext(MainContext)
+  const {prod,addBasket,removeBasket,checkIsBasket,addWish,checkIsWish} = useContext(MainContext)
   return (
     <div className="container">
       {
@@ -16,8 +16,13 @@ function Home() {
               <div className="card_price">{item.price}</div>
             </div>
             <div className="card_buttons">
-              <button>Favorile</button>
-              <button onClick={()=>addBasket(item)}>Basket</button>
+              {
+                checkIsWish(item) ? <button  onClick={()=>addWish(item)}>Favorilerden kaldir</button> : <button  onClick={()=>addWish(item)}>Favorile</button>
+              }
+              <button  onClick={()=>addWish(item)}>Favorile</button>
+               {
+              checkIsBasket(item) ? <button onClick={() => removeBasket(item._id)}>Remove Basket</button> : <button onClick={() => addBasket(item)}>Add Basket</button>
+            }
             </div>
           </div>
         ))

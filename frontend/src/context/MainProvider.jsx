@@ -39,12 +39,11 @@ function MainProvider({ children }) {
     }
   }
 
-  function removeBasket(obj) {
-    basket.filter((x) => x._id !== obj._id);
-    setBasket([...basket]);
+  function removeBasket(id) { 
+    setBasket(basket.filter((x) => x._id !== id));
   }
 
-  function decreaseElement(obj) {
+  function decreaseBasket(obj) {
     const addElement = basket.find((x) => x._id === obj._id);
     if (addElement.count === 1) {
       return;
@@ -57,6 +56,32 @@ function MainProvider({ children }) {
   function totalBasket(){
     return( basket.reduce((total,initial)=>total+(initial.price*initial.count),0))
   }
+  function checkIsBasket(obj) {
+    return basket.some(x=>x._id===obj._id)
+  }
+
+    function addWish(obj) {
+    const addElement = wish.find((x) => x._id === obj._id);
+    if (addElement) {
+      return
+    } else {
+      setWish([...wish,{...obj}]);
+    }
+  }
+
+  function removeWish(id) { 
+    setWish(wish.filter((x) => x._id !== id));
+  }
+
+   function totalWish(){
+    return( wish.reduce((total,initial)=>total+(initial.price*initial.count),0))
+  }
+
+  function checkIsWish(obj) {
+    return wish.some(x=>x._id===obj._id)
+  }
+
+
 
   useEffect(() => {
     getElement(url);
@@ -71,8 +96,8 @@ function MainProvider({ children }) {
         postElement,
         basket,
         addBasket,
-        decreaseElement,
-        removeBasket,totalBasket
+        decreaseBasket,
+        removeBasket,totalBasket,checkIsBasket,addWish,removeWish,totalWish,checkIsWish
       }}
     >
       {children}

@@ -3,13 +3,13 @@ import "./style.css"
 import { MainContext } from "../../context/MainProvider"
 
 function Basket() {
-  const { basket, addBasket, decreaseElement, removeBasket, totalBasket } = useContext(MainContext)
+  const { basket, addBasket, decreaseBasket, removeBasket, totalBasket } = useContext(MainContext)
   if (basket.length === 0) {
     return <p>Hele hecne yoxdur</p>
   }
   return (
     <div className="container">
-      <h1>Total:{totalBasket().toFixed(2)}</h1>
+      <h1>Total:{totalBasket()}</h1>
       {
         basket.map((item)=>(<>
         <div className="card" key={item._id}>
@@ -23,8 +23,8 @@ function Basket() {
           <div className="card_buttons">
             <button onClick={() => addBasket(item)}>+</button>
             <div>Count:{item.count}</div>
-            <button onClick={() => decreaseElement(item)}>-</button>
-            <button onClick={() => removeBasket(item)}>Remove</button>
+            <button onClick={() => decreaseBasket(item)}>-</button>
+            <button onClick={() => removeBasket(item._id)}>Remove</button>
           </div>
         </div>
       </>

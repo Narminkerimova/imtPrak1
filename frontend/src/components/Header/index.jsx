@@ -2,7 +2,7 @@ import {Link } from "react-router";
 import { MainContext } from "../../context/MainProvider";
 import { useContext } from "react";
 function Header() {
-  const {basket} = useContext(MainContext)
+  const {basket,wish} = useContext(MainContext)
   return (
     <nav>
       <ul>
@@ -19,7 +19,8 @@ function Header() {
             <Link to="/basket">Basket</Link> {basket.length}
           </li>
           <li>
-            <Link to="/wishlist">Wish List</Link>
+            <Link to="/wishlist">Wish List</Link> 
+            {/* {wish.length} */}
           </li>
         </ul>
     </nav>
